@@ -1,0 +1,12 @@
+datadog:
+  image: "datadog/docker-dd-agent"
+  restart: "on-failure"
+  privileged: true
+  volumes:
+    - "/var/run/docker.sock:/var/run/docker.sock"
+    - "/proc/mounts:/host/proc/mounts:ro"
+    - "/sys/fs/cgroup/:/host/sys/fs/cgroup:ro"
+  environment:
+    - "API_KEY=302c591a632dcc8d2a08e4123cc07670"
+    - "HOSTNAME=$TUTUM_NODE_HOSTNAME"
+  deployment_strategy: every_node
